@@ -1,8 +1,8 @@
 package com.kang6264.picsumimagelist.data.remote
 
-import com.kang6264.picsumimagelist.data.response.Picscum
+import com.kang6264.picsumimagelist.data.response.Picsum
 import io.reactivex.Single
 
 interface RemoteService {
-    fun getImageList(page: Int) : Single<List<Picscum>>
+    fun getImageList(page: Int) : Single<List<Picsum>>
 }

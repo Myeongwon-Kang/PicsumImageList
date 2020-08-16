@@ -1,6 +1,7 @@
 package com.kang6264.picsumimagelist.presentation.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -17,15 +18,21 @@ class ListFragment : BaseFragment<FragmentListBinding, ListViewModel>() {
     override val viewModel: ListViewModel by viewModels()
     override val bindingVariable: Int = BR.viewModel
 
+    private var adapter = ListMainAdapter()
+
     lateinit var binding: FragmentListBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = getViewDataBinding()
 
-        viewModel.getImageList()
+        binding.listMain.adapter = adapter
+
         viewModel.photoList.observe(viewLifecycleOwner, Observer {
-            val test = ""
+            Log.d("순서 =", "ListFragment() : observe = ${it.size}")
+            adapter.submitList(it)
         })
+
+        viewModel.getImageList()
     }
 }
