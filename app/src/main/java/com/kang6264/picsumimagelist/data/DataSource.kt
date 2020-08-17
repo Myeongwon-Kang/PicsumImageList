@@ -17,7 +17,7 @@ class DataSource(
     ) {
         Log.d("순서 =", "loadInitial : init")
         disposable.add(
-            remoteService.getImageList(1)
+            remoteService.getImageList(1, params.requestedLoadSize)
                 .subscribe({
                     Log.d("순서 = ", "loadInitial : not empty()");
                     callback.onResult(it, 1, 2)
@@ -32,7 +32,7 @@ class DataSource(
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Picsum>) {
         Log.d("순서 =", "loadAfter : init")
         disposable.add(
-            remoteService.getImageList(params.key)
+            remoteService.getImageList(params.key, params.requestedLoadSize)
                 .subscribe({
                     Log.d("순서 = ", "loadAfter : not empty()");
                     callback.onResult(it, params.key.plus(1))

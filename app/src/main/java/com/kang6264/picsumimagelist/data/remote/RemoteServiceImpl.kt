@@ -12,8 +12,8 @@ class RemoteServiceImpl @Inject constructor(
     private val schedulerProvider: SchedulerProvider
 ) : RemoteService {
 
-    override fun getImageList(page: Int): Single<List<Picsum>> {
+    override fun getImageList(page: Int, limit: Int): Single<List<Picsum>> {
         Log.d("순서 = ", "RemoteServiceImpl()")
-        return picsumApi.getImageList(page).subscribeOn(schedulerProvider.io())
+        return picsumApi.getImageList(page, limit).subscribeOn(schedulerProvider.io())
     }
 }

@@ -19,9 +19,9 @@ class RemoteRepositoryImpl @Inject constructor(
         val dataSourceFactory = DataSourceFactory(remoteService, disposable)
 
         val config = PagedList.Config.Builder()
-            .setPageSize(20)
-            .setInitialLoadSizeHint(40)
-            .setEnablePlaceholders(false)
+            .setPageSize(10)
+            .setInitialLoadSizeHint(30)
+            .setPrefetchDistance(10)
             .build()
 
         return RxPagedListBuilder(dataSourceFactory, config).buildObservable()
