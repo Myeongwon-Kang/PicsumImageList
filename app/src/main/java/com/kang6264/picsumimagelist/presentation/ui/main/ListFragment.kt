@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kang6264.picsumimagelist.BR
 import com.kang6264.picsumimagelist.R
 import com.kang6264.picsumimagelist.databinding.FragmentListBinding
@@ -27,6 +29,9 @@ class ListFragment : BaseFragment<FragmentListBinding, ListViewModel>() {
         binding = getViewDataBinding()
 
         binding.listMain.adapter = adapter
+        binding.listMain.apply {
+            addItemDecoration(DividerItemDecoration(view.context, LinearLayoutManager.VERTICAL))
+        }
 
         viewModel.photoList.observe(viewLifecycleOwner, Observer {
             Log.d("순서 =", "ListFragment() : observe = ${it.size}")
