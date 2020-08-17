@@ -4,18 +4,22 @@
 
     <data>
         <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
             name="picsum"
             type="com.kang6264.picsumimagelist.data.response.Picsum" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:onClick="@{clickListener}"
         android:layout_height="wrap_content">
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="250dp"
-            app:imageUrl="@{picsum.download_url}"
+            app:imageFromUrl="@{picsum.download_url}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

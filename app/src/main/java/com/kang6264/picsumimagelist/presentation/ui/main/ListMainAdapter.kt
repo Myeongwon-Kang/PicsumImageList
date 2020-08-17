@@ -1,18 +1,37 @@
 package com.kang6264.picsumimagelist.presentation.ui.main
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.kang6264.picsumimagelist.R
 import com.kang6264.picsumimagelist.data.response.Picsum
 import com.kang6264.picsumimagelist.databinding.ListItemBinding
 
 class ListMainAdapter : PagedListAdapter<Picsum, ListMainAdapter.ViewHolder>(DiffCallback()) {
 
-    inner class ViewHolder(
+    class ViewHolder(
         val binding: ListItemBinding
-    ) : RecyclerView.ViewHolder(binding.root)
+    ) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.setClickListener {
+                binding.picsum?.let { picsum ->
+                    navigateToDetail(picsum, it)
+                }
+            }
+        }
+
+        private fun navigateToDetail(
+            picsum: Picsum,
+            view: View
+        ) {
+            val action = ListFragmentDirections.actionListFragmentToDetailFragment(picsum)
+            view.findNavController().navigate(action)
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -23,7 +42,7 @@ class ListMainAdapter : PagedListAdapter<Picsum, ListMainAdapter.ViewHolder>(Dif
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        getItem(position)?.let {
+        getItem(position).let {
             holder.binding.picsum = it
         }
     }

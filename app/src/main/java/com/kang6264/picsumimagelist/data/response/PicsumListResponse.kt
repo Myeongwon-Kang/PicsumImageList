@@ -1,10 +1,9 @@
 package com.kang6264.picsumimagelist.data.response
 
-/*
-data class PicsumListResponse(val picsums : List<Picscum> )
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-*/
-
+@Parcelize
 data class Picsum(
     val author: String,
     val download_url: String,
@@ -12,4 +11,4 @@ data class Picsum(
     val id: String,
     val url: String,
     val width: Int
-)
+) : Parcelable
