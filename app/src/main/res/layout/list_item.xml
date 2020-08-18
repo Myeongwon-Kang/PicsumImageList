@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="picsum"
             type="com.kang6264.picsumimagelist.data.response.Picsum" />
@@ -13,9 +14,10 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_list_item"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:onClick="@{() -> actionHandler.openDetail(picsum)}">
+        android:onClick="@{(view) -> actionHandler.openDetail(picsum, view)}">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/image_download_url"

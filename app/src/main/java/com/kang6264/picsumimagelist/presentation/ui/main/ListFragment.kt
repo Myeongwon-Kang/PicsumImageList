@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -18,6 +19,7 @@ import com.kang6264.picsumimagelist.databinding.FragmentListBinding
 import com.kang6264.picsumimagelist.presentation.base.BaseFragment
 import com.kang6264.picsumimagelist.presentation.ui.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 
 @AndroidEntryPoint
 class ListFragment : BaseFragment<FragmentListBinding, ListViewModel>(), ActionHandler {
@@ -47,8 +49,9 @@ class ListFragment : BaseFragment<FragmentListBinding, ListViewModel>(), ActionH
         viewModel.getImageList()
     }
 
-    override fun openDetail(picsum: Picsum) {
+    override fun openDetail(picsum: Picsum, view: View) {
         val intent = Intent(requireContext(), DetailActivity::class.java)
-        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(requireActivity()).toBundle())
+        intent.putExtra("image_url", picsum.download_url)
+        startActivity(intent)
     }
 }

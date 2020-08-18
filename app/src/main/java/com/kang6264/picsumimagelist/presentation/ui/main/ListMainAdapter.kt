@@ -30,6 +30,7 @@ class ListMainAdapter(private val actionHandler: ActionHandler) :
         getItem(position).let {
             holder.binding.picsum = it
             holder.binding.actionHandler = actionHandler
+            //holder.binding.viewListItem.transitionName = it?.id
         }
     }
 }
