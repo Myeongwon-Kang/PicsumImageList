@@ -6,16 +6,13 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
 abstract class RemoteRepositoryModule{
 
-    /*@Provides
-    fun provideRemoteRepository(remoteService: RemoteService) : RemoteRepository{
-        return RemoteRepositoryImpl(remoteService)
-    }*/
-
     @Binds
+    @Singleton
     abstract fun bindRemoteRepository(remoteRepositoryImpl: RemoteRepositoryImpl) : RemoteRepository
 }

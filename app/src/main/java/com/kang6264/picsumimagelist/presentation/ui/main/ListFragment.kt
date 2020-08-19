@@ -1,13 +1,9 @@
 package com.kang6264.picsumimagelist.presentation.ui.main
 
-import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.util.Pair
-import androidx.core.view.ViewCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -42,7 +38,6 @@ class ListFragment : BaseFragment<FragmentListBinding, ListViewModel>(), ActionH
         }
 
         viewModel.photoList.observe(viewLifecycleOwner, Observer {
-            Log.d("순서 =", "ListFragment() : observe = ${it.size}")
             adapter.submitList(it)
         })
 

@@ -13,7 +13,6 @@ class RemoteServiceImpl @Inject constructor(
 ) : RemoteService {
 
     override fun getImageList(page: Int, limit: Int): Single<List<Picsum>> {
-        Log.d("순서 = ", "RemoteServiceImpl()")
         return picsumApi.getImageList(page, limit).subscribeOn(schedulerProvider.io())
     }
 }

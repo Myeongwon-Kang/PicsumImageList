@@ -12,10 +12,6 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 abstract class RemoteServiceModule {
 
-    /*@Provides
-    fun provideRemoteService(picsumApi: PicsumApi) : RemoteService{
-        return RemoteServiceImpl(picsumApi)
-    }*/
     @Binds
     @Singleton
     abstract fun bindRemoteService(remoteServiceImpl: RemoteServiceImpl): RemoteService

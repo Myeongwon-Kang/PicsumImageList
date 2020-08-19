@@ -1,8 +1,10 @@
 package com.kang6264.picsumimagelist.presentation.ui.main
 
 import android.util.Log
+import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.paging.PagedList
 import com.kang6264.picsumimagelist.data.repository.RemoteRepository
 import com.kang6264.picsumimagelist.data.response.Picsum
@@ -16,17 +18,11 @@ class ListViewModel @ViewModelInject constructor(
     // 캡술화를 할까?
     val photoList: MutableLiveData<PagedList<Picsum>> = MutableLiveData()
 
-    init {
-        Log.d("순서 = ","ListViewModel = init()")
-
-    }
-
     fun getImageList() {
         addDisposable(
             remoteRepository.getImages()
                 .observeOn(schedulerProvider.ui())
                 .subscribe {
-                    Log.d("순서 = ","ListViewModel subscribe = ${it.size}")
                     photoList.postValue(it)
                 }
         )
