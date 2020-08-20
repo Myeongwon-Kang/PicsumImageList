@@ -22,9 +22,9 @@ class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>() {
         binding = getViewDataBinding()
 
         val picsum = intent.getParcelableExtra<Picsum>("picsum")
-        viewModel.imageUrl.value = picsum.download_url
+        viewModel.imageUrl.value = picsum?.download_url
 
-        toolbar.title = picsum.author
+        toolbar.title = picsum?.author
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
