@@ -46,7 +46,7 @@ class ListFragment : BaseFragment<FragmentListBinding, ListViewModel>(), ActionH
 
     override fun openDetail(picsum: Picsum, view: View) {
         val intent = Intent(requireContext(), DetailActivity::class.java)
-        intent.putExtra("image_url", picsum.download_url)
+        intent.putExtra("picsum", picsum)
         startActivity(intent)
     }
 }

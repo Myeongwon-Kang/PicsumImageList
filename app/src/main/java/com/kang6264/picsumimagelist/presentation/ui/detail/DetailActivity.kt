@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import com.kang6264.picsumimagelist.R
 import com.kang6264.picsumimagelist.databinding.ActivityDetailBinding
 import com.kang6264.picsumimagelist.BR
+import com.kang6264.picsumimagelist.data.response.Picsum
 import com.kang6264.picsumimagelist.presentation.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_detail.*
 
@@ -20,11 +21,12 @@ class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>() {
         super.onCreate(savedInstanceState)
         binding = getViewDataBinding()
 
+        val picsum = intent.getParcelableExtra<Picsum>("picsum")
+        viewModel.imageUrl.value = picsum.download_url
+
+        toolbar.title = picsum.author
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        val imageUrl = intent.getStringExtra("image_url")
-        viewModel.imageUrl.value = imageUrl
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -1,5 +1,6 @@
 package com.kang6264.picsumimagelist.presentation.di
 
+import com.kang6264.picsumimagelist.BuildConfig
 import com.kang6264.picsumimagelist.data.api.PicsumApi
 import dagger.Module
 import dagger.Provides
@@ -15,13 +16,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 @InstallIn(ApplicationComponent::class)
 object NetworkModule {
-    private const val BASE_URL = "https://picsum.photos"
 
     @Provides
     fun provideGetImageService(okHttpClient: OkHttpClient) : PicsumApi{
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl(BASE_URL)
+            .baseUrl(BuildConfig.app_server)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
