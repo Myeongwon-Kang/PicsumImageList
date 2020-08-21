@@ -21,6 +21,7 @@ class RemoteRepositoryImpl @Inject constructor(
             .setPageSize(10)
             .setInitialLoadSizeHint(30)
             .setPrefetchDistance(10)
+            .setEnablePlaceholders(false)
             .build()
 
         return RxPagedListBuilder(dataSourceFactory, config).buildObservable()
