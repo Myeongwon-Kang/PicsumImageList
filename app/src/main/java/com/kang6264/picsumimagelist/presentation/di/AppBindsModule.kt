@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
-abstract class ApplicationBindsModule {
+abstract class AppBindsModule {
 
     @Binds
     @Singleton

@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
 
         val navGraphIds = listOf(R.navigation.home)
 
-        // Setup the bottom navigation view with a list of navigation graphs
         val controller = bottomNavigationView.setupWithNavController(
             navGraphIds = navGraphIds,
             fragmentManager = supportFragmentManager,

@@ -5,5 +5,5 @@ import com.kang6264.picsumimagelist.data.response.Picsum
 import io.reactivex.Observable
 
 interface RemoteRepository {
-    fun getImages() : Observable<PagedList<Picsum>>
+    fun getImageList() : Observable<PagedList<Picsum>>
 }

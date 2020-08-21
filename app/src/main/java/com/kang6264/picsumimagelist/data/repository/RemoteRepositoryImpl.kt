@@ -14,7 +14,7 @@ class RemoteRepositoryImpl @Inject constructor(
     private val remoteService: RemoteService,
     private val disposable: CompositeDisposable
 ) : RemoteRepository {
-    override fun getImages(): Observable<PagedList<Picsum>> {
+    override fun getImageList(): Observable<PagedList<Picsum>> {
         val dataSourceFactory = DataSourceFactory(remoteService, disposable)
 
         val config = PagedList.Config.Builder()
