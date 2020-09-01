@@ -1,5 +1,5 @@
 # PicsumImageList
-- init
+
 
 
 ## 사용한 라이브러리
